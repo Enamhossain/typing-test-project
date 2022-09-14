@@ -1,6 +1,6 @@
 const display = document.getElementById("display");
 const question = document.getElementById("question");
-const startBtn = document.getElementById("start");
+const startBtn = document.getElementById("starts");
 const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
@@ -25,7 +25,7 @@ const typeController = (e) => {
 
   // Handle backspace press
   if (newLetter == "Backspace") {
-    userText = userText.slice(0, userText.length - 1);
+    userText = userText.slice(0, userText.length -1);
     return display.removeChild(display.lastChild);
   }
 
@@ -100,6 +100,7 @@ const closeModal = () => {
 };
 
 const start = () => {
+  // console.log(start)
   // If already started, do not start again
   if (startTime) return;
 
@@ -107,13 +108,16 @@ const start = () => {
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
-    countdownOverlay.innerHTML = '<h1>${count}</h1>';
+    console.log(startCountdown)
+    countdownOverlay.innerHTML = `<h1>${count}</h1>`;
+    // console.log(startCountdown)
 
     // finished timer
     if (count == 0) {
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "flex";
+     
+      countdownOverlay.style.display = "none";
       display.classList.remove("inactive");
 
       clearInterval(startCountdown);
@@ -126,6 +130,7 @@ const start = () => {
 // START Countdown
 startBtn.addEventListener("click", start);
 
+
 // If history exists, show it
 displayHistory();
 
@@ -133,7 +138,7 @@ displayHistory();
 setInterval(() => {
   const currentTime = new Date().getTime();
   const timeSpent = (currentTime - startTime) / 1000;
-
-
-  document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
+      
+ 
+  document.getElementById("show-time").innerHTML = `${startTime ?  timeSpent : 0} seconds`;
 }, 1000);
