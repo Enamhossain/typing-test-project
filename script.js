@@ -94,7 +94,6 @@ const gameOver = () => {
   userText = "";
   display.classList.add("inactive");
 };
-
 const closeModal = () => {
   modalBackground.classList.toggle("hidden");
   resultModal.classList.toggle("hidden");
@@ -109,9 +108,9 @@ const start = () => {
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
-    // console.log(startCountdown)
+    
     countdownOverlay.innerHTML = `<h1>${count}</h1>`;
-    // console.log(startCountdown)
+    
 
     // finished timer
     if (count == 0) {
