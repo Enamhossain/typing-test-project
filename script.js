@@ -46,6 +46,7 @@ const typeController = (e) => {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+    errorCount ++
   }
 
   // check if given question text is equal to user typed text
@@ -108,7 +109,7 @@ const start = () => {
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
-    console.log(startCountdown)
+    // console.log(startCountdown)
     countdownOverlay.innerHTML = `<h1>${count}</h1>`;
     // console.log(startCountdown)
 
@@ -140,5 +141,5 @@ setInterval(() => {
   const timeSpent = (currentTime - startTime) / 1000;
       
  
-  document.getElementById("show-time").innerHTML = `${startTime ?  timeSpent : 0} seconds`;
+  document.getElementById("show-time").innerHTML = `${startTime ?  timeSpent.toFixed():0} seconds`;
 }, 1000);
